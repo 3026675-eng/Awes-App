@@ -7,17 +7,17 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from core import alerts
-from core import analysis
-from core import auth
-from core import config
-from core import data_loader
-from core import equipment
-from core import incidents
-from core import reports
-from core import risk
-from core import safety
-from core import validators
+from import alerts
+from import analysis
+from import auth
+from import config
+from import data_loader
+from import equipment
+from import incidents
+from import reports
+from import risk
+from import safety
+from import validators
 
 
 st.set_page_config(

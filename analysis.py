@@ -8,8 +8,8 @@ from typing import Callable, Optional
 import pandas as pd
 
 import config as C
-from . import incidents as inc
-from . import safety
+import incidents as inc
+import safety
 
 
 @dataclass

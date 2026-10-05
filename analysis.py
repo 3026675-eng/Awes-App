@@ -7,7 +7,7 @@ from typing import Callable, Optional
 
 import pandas as pd
 
-from . import config as C
+import config as C
 from . import incidents as inc
 from . import safety
 

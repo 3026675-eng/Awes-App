@@ -1,7 +1,7 @@
 """Risk assessment: RiskScore = Likelihood x Consequence (1-5 scale)."""
 import pandas as pd
 
-from . import config as C
+import config as C
 
 
 def risk_score(likelihood, consequence):

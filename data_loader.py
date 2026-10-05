@@ -4,10 +4,10 @@ from datetime import date
 
 import pandas as pd
 
-from . import alerts as alerts_mod
-from . import config as C
-from . import equipment as eq
-from . import safety
+import alerts as alerts_mod
+import config as C
+import equipment as eq
+import safety
 
 
 @dataclass

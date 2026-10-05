@@ -2,7 +2,7 @@
 import re
 from datetime import date, datetime
 
-from . import config as C
+import config as C
 
 
 def to_number(value, minimum=None, maximum=None, integer=False):

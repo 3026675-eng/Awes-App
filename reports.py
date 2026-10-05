@@ -1,11 +1,11 @@
 """Report generation (plain text + CSV) - content is restricted to what the role may see."""
 from datetime import datetime
 
-from . import analysis as an
-from . import config as C
-from . import data_loader as dl
-from . import equipment as eq
-from . import safety
+import analysis as an
+import config as C
+import data_loader as dl
+import equipment as eq
+import safety
 
 
 def build_text_report(b, role, username):

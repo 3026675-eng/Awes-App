@@ -5,7 +5,7 @@ import os
 
 import pandas as pd
 
-from . import config as C
+import config as C
 
 ITERATIONS = 100_000
 MAX_ATTEMPTS = 3

@@ -3,7 +3,7 @@ from datetime import timedelta
 
 import pandas as pd
 
-from . import config as C
+import config as C
 
 ORDER = {"NORMAL": 0, "WARNING": 1, "CRITICAL": 2}
 

@@ -7,17 +7,17 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from import alerts
-from import analysis
-from import auth
-from import config
-from import data_loader
-from import equipment
-from import incidents
-from import reports
-from import risk
-from import safety
-from import validators
+import alerts
+import analysis
+import auth
+import config
+import data_loader
+import equipment
+import incidents
+import reports
+import risk
+import safety
+import validators
 
 
 st.set_page_config(
@@ -133,7 +133,7 @@ def show_chart(chart_info, data):
             y = y_value,
             title = title,
             markers = True,
-            color_discrete_sequence =[AMBER]
+            color_discrete_sequence = [AMBER]
         )
     else:
         figure = px.pie(
@@ -544,7 +544,7 @@ def page_workers(bundle, user):
                 "Consequence (1-5)", 1, 5, 2
             )
 
-            submitted =st.form_submit_button("Add worker")
+            submitted = st.form_submit_button("Add worker")
 
         if submitted:
             worker = {
@@ -592,7 +592,7 @@ def page_workers(bundle, user):
                 st.rerun()
 
 
-# C) Safety incidents Database 
+# c) Safety incidents Database
 
 def page_incidents(bundle, user):
     st.header("Safety Incident Database")
@@ -693,8 +693,8 @@ def page_incidents(bundle, user):
             incident_time = second.time_input(
                 "Time",
                 datetime.now().time().replace(
-                    second =0,
-                    microsecond=0
+                    second = 0,
+                    microsecond = 0
                 )
             )
             location = third.selectbox(
@@ -783,7 +783,7 @@ def page_incidents(bundle, user):
                 )
 
                 if severity == "Critical":
-                    message +=  " CRITICAL incident - escalate immediately."
+                    message += " CRITICAL incident - escalate immediately."
                     flash_message("error", message)
                 else:
                     flash_message("success", message)
@@ -881,7 +881,7 @@ def page_incidents(bundle, user):
             )
 
 
-# Equipment Databadse and Condition Monitoring 
+# Equipment Database and Condition Monitoring
 
 EQ_FIELDS = [
     "equipment_id",
@@ -1133,7 +1133,7 @@ def page_equipment(bundle, user):
 
             errors = validators.validate_equipment(
                 updated,
-                is_new = False
+                is_new=False
             )
 
             if errors:
@@ -1283,7 +1283,7 @@ def page_equipment(bundle, user):
                 st.rerun()
 
 
-# f) Equipment Maintanance Monitoring
+# f) Equipment Maintenance Monitoring
 
 def page_maintenance(bundle, user):
     st.header("Equipment Maintenance Monitoring")
@@ -1300,7 +1300,7 @@ def page_maintenance(bundle, user):
 
     show_metrics(
         [(name, len(data)) for name, data in maintenance_groups.items()],
-        items_per_row = 6
+        items_per_row=6
     )
 
     tabs = st.tabs(
@@ -1501,7 +1501,7 @@ def page_analysis(bundle, user):
     selected_group = st.radio(
         "Topic",
         groups,
-        horizontal = True
+        horizontal=True
     )
 
     group_questions = [
@@ -1557,7 +1557,7 @@ def page_reports(bundle, user):
         user["username"]
     )
 
-    st.code(report_text, language = None)
+    st.code(report_text, language=None)
 
     st.download_button(
         "Download summary report (TXT)",
@@ -1576,10 +1576,10 @@ def page_reports(bundle, user):
     for name, data in downloadable.items():
         st.download_button(
             f"Download {name} (CSV)",
-            data.to_csv(index = False),
+            data.to_csv(index=False),
             f"{name}.csv",
             "text/csv",
-            key = f"download_{name}"
+            key=f"download_{name}"
         )
 
 
@@ -1600,7 +1600,7 @@ def page_users(bundle, user):
     )
 
     with add_user:
-        with st.form("add_user", clear_on_submit = True):
+        with st.form("add_user", clear_on_submit=True):
             first, second = st.columns(2)
 
             username = first.text_input("Username")
@@ -1611,7 +1611,7 @@ def page_users(bundle, user):
             role = first.selectbox("Role", config.ROLES)
             password = second.text_input(
                 "Initial password",
-                type = "password"
+                type="password"
             )
 
             submitted = st.form_submit_button("Create user")
@@ -1673,7 +1673,7 @@ def page_users(bundle, user):
 
         new_password = st.text_input(
             "New password",
-            type = "password"
+            type="password"
         )
 
         if st.button("Reset password"):

@@ -8,10 +8,10 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 FILES = {
-    "users": DATA_DIR / "users.csv",
-    "workers": DATA_DIR / "workers.csv",
-    "incidents": DATA_DIR / "incidents.csv",
-    "equipment": DATA_DIR / "equipment.csv",
+    "users": BASE_DIR / "users.csv",
+    "workers": BASE_DIR / "workers.csv",
+    "incidents": BASE_DIR / "incidents.csv",
+    "equipment": BASE_DIR / "equipment.csv",
 }
 
 # ---- Equipment condition thresholds (educational prototype values) ----

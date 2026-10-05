@@ -1,7 +1,7 @@
 """Automatic alert generation from predefined conditions."""
 import pandas as pd
 
-from . import config as C
+import config as C
 
 COLUMNS = ["severity", "category", "entity_type", "entity_id", "area", "parameter", "value",
            "status", "recommended_action"]

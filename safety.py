@@ -1,8 +1,8 @@
 """Worker health and safety monitoring."""
 import pandas as pd
 
-from . import config as C
-from . import risk
+import config as C
+import risk
 
 
 def enrich_workers(df):

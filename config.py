@@ -13,7 +13,6 @@ FILES = {
     "incidents": BASE_DIR / "incidents.csv",
     "equipment": BASE_DIR / "equipment.csv",
 }
-
 # ---- Equipment condition thresholds (educational prototype values) ----
 TEMP_WARNING, TEMP_CRITICAL = 80.0, 100.0      # deg C   (<80 normal, 80-100 warning, >100 critical)
 VIB_WARNING, VIB_CRITICAL = 5.0, 8.0           # mm/s    (<5 normal, 5-8 warning, >8 critical)

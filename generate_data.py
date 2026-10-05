@@ -8,7 +8,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from core import auth, config as C  # noqa: E402
+import auth, config as C  # noqa: E402
 
 SEED = 2026
 

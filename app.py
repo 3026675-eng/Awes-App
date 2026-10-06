@@ -46,28 +46,66 @@ CONDITION_COLOURS = {
 st.markdown(
     """
     <style>
-    .block-container {padding-top: 1.5rem;}
-    h1, h2, h3 {color: #2B2B2B;}
-    [data-testid = "stMetric"] {
-        background:#F3F1EC;
-        border-left: 6px solid #C77700;
-        padding: 10px 14px;
-        border-radius: 6px;
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+        --khwezi-amber: #F2A900;
+        --khwezi-gold: #FFC857;
+        --khwezi-charcoal: #121417;
+        --khwezi-slate: #1B2026;
+        --khwezi-panel: #20262D;
+        --khwezi-paper: #F4F1E9;
+        --khwezi-muted: #AEB6BF;
+        --khwezi-red: #E05252;
+        --khwezi-green: #53B77A;
     }
-    .banner {
-        background:#2B2B2B;
-        color:#fff;
-        padding:14px 20px;
-        border-radius:8px;
-        border-bottom:5px solid #C77700;
-        margin-bottom:12px;
-    }
-    .banner h2 {color:#fff; margin:0;}
-    .banner p {margin:0; color:#E0DCD0;}
+
+    html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
+    .stApp { background: linear-gradient(135deg, #f4f1e9 0%, #ece8de 100%); }
+    .block-container { padding: 1.1rem 2.4rem 3rem; max-width: 1500px; }
+    h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif !important; letter-spacing: .02em; color: #17191c; }
+    h1 { font-size: 2.8rem !important; font-weight: 800 !important; }
+    h2 { font-size: 2.05rem !important; font-weight: 700 !important; }
+    h3 { font-size: 1.5rem !important; }
+
+    [data-testid="stSidebar"] { background: #121417; }
+    [data-testid="stSidebar"] * { color: #f5f2ea !important; }
+    [data-testid="stSidebar"] .stButton button { border-color: #353b42 !important; }
+    [data-testid="stMetric"] { background: #fffdf8; border: 1px solid #ddd7ca; border-left: 5px solid #F2A900; padding: 14px 16px; border-radius: 14px; box-shadow: 0 8px 25px rgba(20,20,20,.05); }
+    [data-testid="stMetricLabel"] { color: #6d737a !important; }
+    [data-testid="stMetricValue"] { font-family: 'Barlow Condensed', sans-serif; }
+    .stButton button { border-radius: 10px; font-weight: 700; min-height: 42px; }
+    .stButton button:hover { border-color: #F2A900; color: #17191c; transform: translateY(-1px); }
+    .banner { background: linear-gradient(120deg, #111316 0%, #252b31 100%); color:#fff; padding:20px 24px; border-radius:18px; border-bottom:5px solid #F2A900; margin-bottom:18px; box-shadow:0 14px 35px rgba(0,0,0,.14); }
+    .banner h2 { color:#fff; margin:0; font-size:2rem !important; }
+    .banner p { margin:4px 0 0; color:#cbd0d6; }
+    .khwezi-word { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:5.8rem; line-height:.85; letter-spacing:.04em; color:#fff; }
+    .hero { background: radial-gradient(circle at 82% 15%, rgba(242,169,0,.35), transparent 30%), linear-gradient(125deg,#101215,#252b30); border-radius:28px; padding:42px 44px; min-height:310px; color:#fff; box-shadow:0 22px 60px rgba(0,0,0,.2); border:1px solid #323940; }
+    .hero .eyebrow { text-transform:uppercase; letter-spacing:.2em; font-size:.75rem; color:#F2A900; font-weight:800; }
+    .hero .tagline { font-size:1.25rem; color:#d5d9dd; margin:20px 0 26px; max-width:600px; }
+    .module-card { background:#fffdf8; border:1px solid #ddd7ca; border-radius:18px; padding:22px; min-height:150px; box-shadow:0 8px 25px rgba(20,20,20,.05); }
+    .module-card .icon { font-size:2rem; }
+    .module-card .title { font-family:'Barlow Condensed',sans-serif; font-size:1.45rem; font-weight:700; margin-top:8px; }
+    .module-card .copy { color:#6c7279; font-size:.9rem; }
+    .section-kicker { color:#A86F00; text-transform:uppercase; letter-spacing:.16em; font-size:.72rem; font-weight:800; margin-bottom:4px; }
+    .page-strip { display:flex; align-items:center; justify-content:space-between; background:#17191c; color:white; padding:10px 14px; border-radius:12px; margin-bottom:18px; }
+    .page-strip .brand { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:800; letter-spacing:.08em; }
+    .page-strip .status { color:#bfc5cb; font-size:.8rem; }
+    .attention { background:#fffdf8; border-radius:16px; border:1px solid #ddd7ca; padding:18px; box-shadow:0 8px 25px rgba(20,20,20,.04); }
+    .attention.critical { border-left:6px solid #E05252; }
+    .attention.warning { border-left:6px solid #F2A900; }
+    .attention.normal { border-left:6px solid #53B77A; }
+    .mini-label { color:#7c8288; font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; font-weight:700; }
+    .mini-value { font-family:'Barlow Condensed',sans-serif; font-size:1.65rem; font-weight:700; }
+    .night-mode .stApp { background:#0d0f11; }
+    .night-mode .module-card, .night-mode .attention, .night-mode [data-testid="stMetric"] { background:#171a1e; border-color:#30353b; color:#f4f1e9; }
+    .night-mode h1, .night-mode h2, .night-mode h3, .night-mode h4 { color:#f4f1e9 !important; }
+    @media (max-width: 900px) { .khwezi-word { font-size:4rem; } .block-container { padding:1rem; } }
     </style>
     """,
-    unsafe_allow_html = True
+    unsafe_allow_html=True
 )
+
 
 
 # Small helper functions
@@ -165,178 +203,238 @@ def show_metrics(items, items_per_row = 4):
 # a) Login Portal [Access Control]
 
 def login_page():
+    """Cinematic access portal while retaining the original authentication logic."""
     st.markdown(
-        '<div class = "banner"><h2>⛏️ Khwezi Mining Monitor</h2>'
-        '<p>Health, Safety and Equipment Monitoring - secure login</p></div>',
-        unsafe_allow_html = True
+        '<div class="hero">'
+        '<div class="eyebrow">KHWЕZI MINING / OPERATIONS INTELLIGENCE</div>'
+        '<div class="khwezi-word">KHWEZI</div>'
+        '<div class="tagline">Mining intelligence. Built for safer operations.</div>'
+        '<div style="color:#aeb6bf;max-width:560px;line-height:1.6;">'
+        'One command centre for people, equipment, incidents, risk and maintenance. '
+        'Sign in to enter the operational workspace.'
+        '</div></div>',
+        unsafe_allow_html=True
     )
 
+    st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
     locked_until = st.session_state.get("locked_until", 0)
 
     if time.time() < locked_until:
         remaining = int(locked_until - time.time())
-        st.error(
-            f"Too many failed attempts. Try again in {remaining} seconds."
-        )
+        st.error(f"Too many failed attempts. Try again in {remaining} seconds.")
         return
 
-    _, middle, _ = st.columns([1, 1.2, 1])
-
+    left, middle, right = st.columns([1, 1.05, 1])
     with middle:
+        st.markdown('<div class="section-kicker">Secure access</div>', unsafe_allow_html=True)
         with st.form("login"):
             username = st.text_input("Username")
-            password = st.text_input("Password", type = "password")
-            login_clicked = st.form_submit_button("Log in")
+            password = st.text_input("Password", type="password")
+            login_clicked = st.form_submit_button("ENTER COMMAND CENTRE →", use_container_width=True)
 
         if login_clicked:
             user = auth.authenticate(username, password)
-
             if user:
-                st.session_state.update(user = user, attempts = 0)
+                st.session_state.update(user=user, attempts=0, current_page="Home", nav_history=[])
                 st.rerun()
 
-            st.session_state["attempts"] = (
-                st.session_state.get("attempts", 0) + 1
-            )
-
-            attempts_left = (
-                auth.MAX_ATTEMPTS - st.session_state["attempts"]
-            )
-
+            st.session_state["attempts"] = st.session_state.get("attempts", 0) + 1
+            attempts_left = auth.MAX_ATTEMPTS - st.session_state["attempts"]
             if attempts_left <= 0:
                 st.session_state["locked_until"] = time.time() + 30
                 st.session_state["attempts"] = 0
-                st.error(
-                    "Too many failed attempts. Login locked for 30 seconds."
-                )
+                st.error("Too many failed attempts. Login locked for 30 seconds.")
             else:
-                st.error(
-                    "Invalid username/password, or the account is inactive. "
-                    f"{attempts_left} attempt(s) left."
-                )
+                st.error("Invalid username/password, or the account is inactive. "
+                         f"{attempts_left} attempt(s) left.")
 
-        with st.expander("Demo accounts (prototype only)"):
+        with st.expander("Prototype demo accounts"):
             demo_accounts = pd.DataFrame({
                 "Role": config.ROLES,
-                "Username": [
-                    "admin", "safety", "engineer", "maint", "manager"
-                ],
-                "Password": [
-                    "Admin@123",
-                    "Safety@123",
-                    "Mining@123",
-                    "Maint@123",
-                    "Manager@123"
-                ]
+                "Username": ["admin", "safety", "engineer", "maint", "manager"],
+                "Password": ["Admin@123", "Safety@123", "Mining@123", "Maint@123", "Manager@123"]
             })
-            st.table(demo_accounts)
+            st.dataframe(demo_accounts, hide_index=True, use_container_width=True)
+
+    st.markdown(
+        '<div style="text-align:center;color:#747a80;font-size:.78rem;margin-top:24px;">'
+        'PEOPLE • EQUIPMENT • SAFETY • INTELLIGENCE</div>',
+        unsafe_allow_html=True
+    )
+
+
+# New experience layer -------------------------------------------------------
+
+def allowed_page_names(user):
+    names = []
+    for page_name, (permission, _) in PAGES.items():
+        if auth.has_permission(user["role"], permission):
+            names.append(page_name)
+    return names
+
+
+def go_to(page):
+    current = st.session_state.get("current_page", "Home")
+    if current != page:
+        history = st.session_state.setdefault("nav_history", [])
+        if not history or history[-1] != current:
+            history.append(current)
+    st.session_state["current_page"] = page
+    st.rerun()
+
+
+def go_back():
+    history = st.session_state.setdefault("nav_history", [])
+    if history:
+        st.session_state["current_page"] = history.pop()
+    else:
+        st.session_state["current_page"] = "Home"
+    st.rerun()
+
+
+def page_controls(user, current_page):
+    back, home, spacer, mode = st.columns([.8, .8, 5, 1.2])
+    with back:
+        if st.button("← Back", key="global_back", use_container_width=True):
+            go_back()
+    with home:
+        if st.button("⌂ Home", key="global_home", use_container_width=True):
+            go_to("Home")
+    with mode:
+        night = st.toggle("Night", value=st.session_state.get("night_mode", False), key="night_toggle")
+        st.session_state["night_mode"] = night
+    st.markdown(
+        f'<div class="page-strip"><span class="brand">⛏ KHWEZI / {current_page.upper()}</span>'
+        f'<span class="status">{user["full_name"]} · {user["role"]}</span></div>',
+        unsafe_allow_html=True
+    )
+
+
+def home_card(icon, title, copy, page, user):
+    col = st.container()
+    with col:
+        st.markdown(
+            f'<div class="module-card"><div class="icon">{icon}</div>'
+            f'<div class="title">{title}</div><div class="copy">{copy}</div></div>',
+            unsafe_allow_html=True
+        )
+        if st.button(f"Open {title} →", key=f"home_{page}", use_container_width=True):
+            go_to(page)
+
+
+def page_home(bundle, user):
+    role = user["role"]
+    kpis = data_loader.kpis(bundle, role)
+    alert_data = alerts.filter_by_permissions(bundle.alerts, role)
+    critical_count = int((alert_data["severity"] == "CRITICAL").sum()) if len(alert_data) else 0
+    warning_count = int((alert_data["severity"] == "WARNING").sum()) if len(alert_data) else 0
+
+    st.markdown(
+        '<div class="hero">'
+        '<div class="eyebrow">WELCOME BACK / KHWЕZI COMMAND CENTRE</div>'
+        '<div class="khwezi-word">KHWEZI</div>'
+        f'<div class="tagline">Good to see you, {user["full_name"]}. Keep the operation moving — safely.</div>'
+        '<div style="color:#aeb6bf;line-height:1.6;max-width:680px;">'
+        'Monitor what matters, move quickly on exceptions, and keep people and equipment ahead of risk.'
+        '</div></div>',
+        unsafe_allow_html=True
+    )
+
+    st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-kicker">Operational pulse</div>', unsafe_allow_html=True)
+    pulse_items = list(kpis.items())[:4]
+    show_metrics(pulse_items)
+
+    a, b, c = st.columns(3)
+    with a:
+        st.markdown(f'<div class="attention critical"><div class="mini-label">Critical alerts</div><div class="mini-value">{critical_count}</div><div>Needs immediate attention</div></div>', unsafe_allow_html=True)
+    with b:
+        st.markdown(f'<div class="attention warning"><div class="mini-label">Warnings</div><div class="mini-value">{warning_count}</div><div>Watch and investigate</div></div>', unsafe_allow_html=True)
+    with c:
+        st.markdown('<div class="attention normal"><div class="mini-label">Command centre</div><div class="mini-value">ONLINE</div><div>Monitoring systems available</div></div>', unsafe_allow_html=True)
+
+    st.markdown('<div style="height:28px"></div><div class="section-kicker">Choose your mission</div><h2 style="margin-top:0">Move through the operation</h2>', unsafe_allow_html=True)
+
+    available = set(allowed_page_names(user))
+    modules = [
+        ("🛰️", "Dashboard", "Your operational command view", "Dashboard"),
+        ("🚨", "Alerts", "See exceptions before they become events", "Alerts"),
+        ("🦺", "Worker Safety", "People, PPE, fatigue and risk", "Worker Safety"),
+        ("🩹", "Safety Incidents", "Investigate and understand events", "Safety Incidents"),
+        ("🚜", "Equipment", "Fleet health and condition", "Equipment"),
+        ("🔧", "Maintenance", "Keep machines ready", "Maintenance"),
+        ("⚠️", "Risk Assessment", "Identify and control exposure", "Risk Assessment"),
+        ("📊", "Data Analysis", "Turn operational data into answers", "Data Analysis"),
+        ("📑", "Reports", "Package the current picture", "Reports"),
+    ]
+    if "Manage Users" in available:
+        modules.append(("👤", "Manage Users", "Control access and accounts", "Manage Users"))
+
+    cols = st.columns(3)
+    for i, (icon, title, copy, page) in enumerate(modules):
+        with cols[i % 3]:
+            home_card(icon, title, copy, page, user)
+
+    st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-kicker">Quick actions</div>', unsafe_allow_html=True)
+    q1, q2, q3, q4 = st.columns(4)
+    quick = [(q1, "🚨 Review alerts", "Alerts"), (q2, "🚜 Fleet condition", "Equipment"),
+             (q3, "🩹 Log incident", "Safety Incidents"), (q4, "📊 Analyse data", "Data Analysis")]
+    for col, label, page in quick:
+        with col:
+            if page in available and st.button(label, key=f"quick_{page}", use_container_width=True):
+                go_to(page)
 
 
 # Dashboard
 
 def page_dashboard(bundle, user):
     role = user["role"]
-
-    st.header("Khwezi Mining Monitoring Dashboard")
-    show_metrics(data_loader.kpis(bundle, role).items())
-
+    kpis = data_loader.kpis(bundle, role)
     alert_data = alerts.filter_by_permissions(bundle.alerts, role)
 
-    left, right = st.columns(2)
+    st.markdown('<div class="section-kicker">Operational intelligence</div>', unsafe_allow_html=True)
+    st.header("Command Centre")
+    st.caption("A live view of the conditions that matter most across the operation.")
+    show_metrics(kpis.items())
 
+    critical_count = int((alert_data["severity"] == "CRITICAL").sum()) if len(alert_data) else 0
+    warning_count = int((alert_data["severity"] == "WARNING").sum()) if len(alert_data) else 0
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown(f'<div class="attention critical"><div class="mini-label">Critical</div><div class="mini-value">{critical_count}</div><div>Immediate operational attention</div></div>', unsafe_allow_html=True)
+    with c2:
+        st.markdown(f'<div class="attention warning"><div class="mini-label">Warnings</div><div class="mini-value">{warning_count}</div><div>Monitor and investigate</div></div>', unsafe_allow_html=True)
+    with c3:
+        health = "STABLE" if critical_count == 0 else "ATTENTION REQUIRED"
+        cls = "normal" if critical_count == 0 else "critical"
+        st.markdown(f'<div class="attention {cls}"><div class="mini-label">Operational state</div><div class="mini-value">{health}</div><div>Based on current visible alerts</div></div>', unsafe_allow_html=True)
+
+    left, right = st.columns(2)
     with left:
         if role in config.PERMISSIONS["incidents"]:
-            show_chart(
-                {
-                    "kind": "line",
-                    "x": "month",
-                    "y": "incidents",
-                    "title": "Safety incidents per month"
-                },
-                incidents.monthly_trend(bundle.incidents)
-            )
-
+            show_chart({"kind":"line","x":"month","y":"incidents","title":"Safety incidents per month"}, incidents.monthly_trend(bundle.incidents))
         if role in config.PERMISSIONS["equipment"]:
-            equipment_summary = (
-                bundle.equipment
-                .groupby("equipment_type")["availability"]
-                .mean()
-                .round(1)
-                .reset_index()
-            )
-
-            show_chart(
-                {
-                    "kind": "bar",
-                    "x": "equipment_type",
-                    "y": "availability",
-                    "title": "Average availability by equipment type (%)"
-                },
-                equipment_summary
-            )
-
+            equipment_summary = bundle.equipment.groupby("equipment_type")["availability"].mean().round(1).reset_index()
+            show_chart({"kind":"bar","x":"equipment_type","y":"availability","title":"Average availability by equipment type (%)"}, equipment_summary)
     with right:
         if role in config.PERMISSIONS["equipment"]:
-            condition_summary = (
-                bundle.equipment["condition"]
-                .value_counts()
-                .rename_axis("condition")
-                .reset_index(name="count")
-            )
-
-            show_chart(
-                {
-                    "kind": "pie",
-                    "x": "condition",
-                    "y": "count",
-                    "title": "Equipment condition"
-                },
-                condition_summary
-            )
-
+            condition_summary = bundle.equipment["condition"].value_counts().rename_axis("condition").reset_index(name="count")
+            show_chart({"kind":"pie","x":"condition","y":"count","title":"Equipment condition"}, condition_summary)
         if len(alert_data):
-            alert_summary = (
-                alert_data.groupby(["category", "severity"])
-                .size()
-                .reset_index(name="alerts")
-            )
+            alert_summary = alert_data.groupby(["category", "severity"]).size().reset_index(name="alerts")
+            figure = px.bar(alert_summary, x="category", y="alerts", color="severity", title="Active alerts by category",
+                            color_discrete_map={"CRITICAL":"#C62828", "WARNING":"#EF8F00"})
+            figure.update_layout(margin=dict(l=10,r=10,t=50,b=10))
+            st.plotly_chart(figure, use_container_width=True)
 
-            figure = px.bar(
-                alert_summary,
-                x="category",
-                y="alerts",
-                color="severity",
-                title="Active alerts by category",
-                color_discrete_map={
-                    "CRITICAL": "#C62828",
-                    "WARNING": "#EF8F00"
-                }
-            )
-            st.plotly_chart(figure)
-
-    st.subheader("Top critical alerts")
-
-    critical = (
-        alert_data[alert_data["severity"] == "CRITICAL"].head(8)
-        if len(alert_data)
-        else alert_data
-    )
-
+    st.subheader("Priority queue")
+    critical = alert_data[alert_data["severity"] == "CRITICAL"].head(8) if len(alert_data) else alert_data
     if len(critical):
-        critical = critical[
-            [
-                "alert_id",
-                "severity",
-                "category",
-                "entity_id",
-                "parameter",
-                "value",
-                "status"
-            ]
-        ]
-        show_table(add_status_labels(critical, ["severity"]))
+        critical = critical[["alert_id","severity","category","entity_id","parameter","value","status"]]
+        show_table(add_status_labels(critical, ["severity"]), use_container_width=True)
     else:
-        show_table(critical)
+        st.success("No critical alerts in your visible scope. The operation is clear on this front.")
 
 
 # Alerts
@@ -1706,53 +1804,60 @@ PAGES = {
 
 def main():
     user = st.session_state.get("user")
-
     if not user:
         login_page()
         return
 
-    sidebar = st.sidebar
-
-    sidebar.markdown("### ⛏️ Khwezi Mining Monitor")
-    sidebar.write(
-        f"**{user['full_name']}**  \n"
-        f"Role: {user['role']}"
-    )
-
-    reference_date = sidebar.date_input(
-        "Reference date",
-        date.today(),
-        help="Date used to decide due / overdue maintenance."
-    )
-
-    allowed_pages = [
-        page_name
-        for page_name, (permission, _) in PAGES.items()
-        if auth.has_permission(user["role"], permission)
-    ]
-
-    selected_page = sidebar.radio(
-        "Navigation",
-        allowed_pages
-    )
-
-    if sidebar.button("Log out"):
-        st.session_state.clear()
-        st.rerun()
-
+    # Build the data once for the selected reference date.
+    reference_date = st.session_state.get("reference_date", date.today())
     try:
         bundle = data_loader.build_bundle(reference_date)
     except FileNotFoundError:
-        st.error(
-            "Data files not found. Run: "
-            "python data/generate_data.py"
-        )
+        st.error("Data files not found. Run: python data/generate_data.py")
         return
 
-    permission, page_function = PAGES[selected_page]
+    if "current_page" not in st.session_state:
+        st.session_state["current_page"] = "Home"
+    if "nav_history" not in st.session_state:
+        st.session_state["nav_history"] = []
 
+    allowed = allowed_page_names(user)
+    current_page = st.session_state.get("current_page", "Home")
+    if current_page != "Home" and current_page not in allowed:
+        current_page = "Home"
+        st.session_state["current_page"] = current_page
+
+    # Compact top navigation: Home + the most-used operational areas.
+    nav_items = ["Home", "Dashboard", "Alerts", "Worker Safety", "Safety Incidents", "Equipment"]
+    nav_items = [item for item in nav_items if item == "Home" or item in allowed]
+    nav_cols = st.columns(len(nav_items) + 1)
+    for col, item in zip(nav_cols, nav_items):
+        with col:
+            label = "⌂ HOME" if item == "Home" else item.upper()
+            if st.button(label, key=f"topnav_{item}", use_container_width=True):
+                go_to(item)
+    with nav_cols[-1]:
+        if st.button("↪ LOG OUT", key="topnav_logout", use_container_width=True):
+            st.session_state.clear()
+            st.rerun()
+
+    # Reference date stays available without forcing the old sidebar layout.
+    with st.expander("Control room settings", expanded=False):
+        new_reference = st.date_input("Reference date", reference_date, help="Date used to decide due / overdue maintenance.")
+        if new_reference != reference_date:
+            st.session_state["reference_date"] = new_reference
+            st.rerun()
+
+    page_controls(user, current_page)
+
+    if current_page == "Home":
+        page_home(bundle, user)
+        return
+
+    permission, page_function = PAGES[current_page]
     if not auth.has_permission(user["role"], permission):
         st.error("Access denied for your role.")
+        go_to("Home")
         return
 
     page_function(bundle, user)

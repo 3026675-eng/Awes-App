@@ -11,7 +11,7 @@ import alerts
 import analysis
 import auth
 import config
-imports data_loader
+import data_loader
 import equipment
 import incidents
 import reports

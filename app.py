@@ -42,25 +42,7 @@ CONDITION_COLOURS = {
     "CRITICAL": "#C62828"
 }
 
-
-st.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
-
-    :root {
-        --khwezi-amber: #F2A900;
-        --khwezi-gold: #FFC857;
-        --khwezi-charcoal: #121417;
-        --khwezi-slate: #1B2026;
-        --khwezi-panel: #20262D;
-        --khwezi-paper: #F4F1E9;
-        --khwezi-muted: #AEB6BF;
-        --khwezi-red: #E05252;
-        --khwezi-green: #53B77A;
-    }
-
-    ```python
+```python
 st.markdown(
     """
     <style>
@@ -71,19 +53,19 @@ st.markdown(
     }
 
     .stApp {
-        background: linear-gradient(135deg, #f4f1e9, #ece8de);
+        background: linear-gradient(135deg, #f4f1e9 0%, #ece8de 100%);
     }
 
     .block-container {
-        max-width: 1500px;
         padding: 1.1rem 2.4rem 3rem;
+        max-width: 1500px;
     }
 
     /* Headings */
     h1, h2, h3, h4 {
         font-family: 'Barlow Condensed', sans-serif !important;
-        color: #17191c;
         letter-spacing: 0.02em;
+        color: #17191c;
     }
 
     h1 {
@@ -146,7 +128,7 @@ st.markdown(
 
     /* Banner */
     .banner {
-        background: linear-gradient(120deg, #111316, #252b31);
+        background: linear-gradient(120deg, #111316 0%, #252b31 100%);
         color: #fff;
         padding: 20px 24px;
         border-radius: 18px;
@@ -166,7 +148,16 @@ st.markdown(
         color: #cbd0d6;
     }
 
-    /* Main welcome section */
+    /* Main heading and welcome panel */
+    .khwezi-word {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 800;
+        font-size: 5.8rem;
+        line-height: 0.85;
+        letter-spacing: 0.04em;
+        color: #fff;
+    }
+
     .hero {
         background:
             radial-gradient(
@@ -184,10 +175,10 @@ st.markdown(
     }
 
     .hero .eyebrow {
-        color: #F2A900;
         text-transform: uppercase;
         letter-spacing: 0.2em;
         font-size: 0.75rem;
+        color: #F2A900;
         font-weight: 800;
     }
 
@@ -198,28 +189,14 @@ st.markdown(
         max-width: 600px;
     }
 
-    .khwezi-word {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 800;
-        font-size: 5.8rem;
-        line-height: 0.85;
-        letter-spacing: 0.04em;
-        color: #fff;
-    }
-
     /* Module cards */
-    .module-card,
-    .attention,
-    .data-module {
+    .module-card {
         background: #fffdf8;
         border: 1px solid #ddd7ca;
-        box-shadow: 0 8px 25px rgba(20, 20, 20, 0.05);
-    }
-
-    .module-card {
         border-radius: 18px;
         padding: 22px;
         min-height: 150px;
+        box-shadow: 0 8px 25px rgba(20, 20, 20, 0.05);
     }
 
     .module-card .icon {
@@ -238,7 +215,6 @@ st.markdown(
         font-size: 0.9rem;
     }
 
-    /* Section labels */
     .section-kicker {
         color: #A86F00;
         text-transform: uppercase;
@@ -246,20 +222,6 @@ st.markdown(
         font-size: 0.72rem;
         font-weight: 800;
         margin-bottom: 4px;
-    }
-
-    .mini-label {
-        color: #7c8288;
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-weight: 700;
-    }
-
-    .mini-value {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-size: 1.65rem;
-        font-weight: 700;
     }
 
     /* Page navigation */
@@ -286,10 +248,13 @@ st.markdown(
         font-size: 0.8rem;
     }
 
-    /* Alerts */
+    /* Information and alert cards */
     .attention {
+        background: #fffdf8;
         border-radius: 16px;
+        border: 1px solid #ddd7ca;
         padding: 18px;
+        box-shadow: 0 8px 25px rgba(20, 20, 20, 0.04);
     }
 
     .attention.critical {
@@ -302,6 +267,20 @@ st.markdown(
 
     .attention.normal {
         border-left: 6px solid #53B77A;
+    }
+
+    .mini-label {
+        color: #7c8288;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+    }
+
+    .mini-value {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.65rem;
+        font-weight: 700;
     }
 
     /* Dark mode */
@@ -342,15 +321,10 @@ st.markdown(
         z-index: 99;
     }
 
-    .app-header-brand,
-    .app-route,
-    .app-user {
+    .app-header-brand {
         display: flex;
         align-items: center;
         gap: 10px;
-    }
-
-    .app-header-brand {
         min-width: 210px;
     }
 
@@ -364,8 +338,8 @@ st.markdown(
         background: #F2A900;
         color: #111316;
         font-family: 'Barlow Condensed', sans-serif;
-        font-size: 1.5rem;
         font-weight: 900;
+        font-size: 1.5rem;
     }
 
     .app-brand-name {
@@ -373,6 +347,7 @@ st.markdown(
         font-size: 1.25rem;
         font-weight: 900;
         letter-spacing: 0.12em;
+        line-height: 1;
     }
 
     .app-brand-sub {
@@ -383,6 +358,9 @@ st.markdown(
     }
 
     .app-route {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         font-size: 0.75rem;
         letter-spacing: 0.12em;
         font-weight: 800;
@@ -402,9 +380,11 @@ st.markdown(
     }
 
     .app-user {
+        display: flex;
+        align-items: center;
+        gap: 9px;
         min-width: 180px;
         justify-content: flex-end;
-        gap: 9px;
     }
 
     .user-dot {
@@ -438,7 +418,7 @@ st.markdown(
         margin-top: 4px;
     }
 
-    /* Welcome screen */
+    /* Page path */
     .breadcrumb {
         display: flex;
         gap: 9px;
@@ -459,6 +439,7 @@ st.markdown(
         color: #b3b8bd;
     }
 
+    /* Welcome screen */
     .welcome-stage {
         text-align: center;
         padding: 48px 10px 34px;
@@ -502,7 +483,7 @@ st.markdown(
         line-height: 1.65;
     }
 
-    /* Selection cards */
+    /* Welcome selection cards */
     .choice-card {
         min-height: 265px;
         padding: 30px;
@@ -553,11 +534,37 @@ st.markdown(
         min-height: 52px;
     }
 
-    /* Data modules */
+    .welcome-footer {
+        text-align: center;
+        color: #8a9096;
+        letter-spacing: 0.18em;
+        font-size: 0.65rem;
+        font-weight: 800;
+        margin: 35px 0 8px;
+    }
+
+    /* Data cards */
+    .screen-title {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 3.1rem;
+        line-height: 1;
+        font-weight: 800;
+        color: #17191c;
+        margin-bottom: 8px;
+    }
+
+    .screen-subtitle {
+        color: #70777e;
+        margin-bottom: 24px;
+    }
+
     .data-module {
         min-height: 185px;
         padding: 21px;
         border-radius: 19px;
+        background: #fffdf8;
+        border: 1px solid #ddd7ca;
+        box-shadow: 0 9px 26px rgba(20, 20, 20, 0.05);
         margin-bottom: 10px;
     }
 
@@ -611,16 +618,6 @@ st.markdown(
         margin: 24px 0;
     }
 
-    /* Footer and dividers */
-    .welcome-footer {
-        text-align: center;
-        color: #8a9096;
-        letter-spacing: 0.18em;
-        font-size: 0.65rem;
-        font-weight: 800;
-        margin: 35px 0 8px;
-    }
-
     .bottom-rule {
         height: 1px;
         background: #d8d2c6;
@@ -644,8 +641,7 @@ st.markdown(
             flex-wrap: wrap;
         }
 
-        .app-header-brand,
-        .app-user {
+        .app-header-brand {
             min-width: auto;
         }
 
@@ -653,6 +649,10 @@ st.markdown(
             order: 3;
             width: 100%;
             justify-content: center;
+        }
+
+        .app-user {
+            min-width: auto;
         }
 
         .user-copy {
@@ -673,7 +673,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 ```
-
 
 # Small helper functions
 

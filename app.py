@@ -42,7 +42,6 @@ CONDITION_COLOURS = {
     "CRITICAL": "#C62828"
 }
 
-```python
 st.markdown(
     """
     <style>
@@ -672,7 +671,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-```
 
 # Small helper functions
 
